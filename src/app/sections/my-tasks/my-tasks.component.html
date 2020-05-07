@@ -1,0 +1,22 @@
+<table class="striped-table">
+    <thead>
+        <tr>
+            <th>Case Id</th>
+            <th>Task Name</th>
+            <th>Priority</th>
+            <th>Start Date</th>
+            <th>Out Date</th>
+            <th>Follow up Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let task of myTasks">
+            <td>{{task.caseId}}</td>
+            <td><a href="#">{{task.taskName}}</a></td>
+            <td>{{task.priority}}</td>
+            <td>{{task.startDate}}</td>
+            <td>{{task.outDate}}</td>
+            <td>{{task.followUpDate}}</td>
+        </tr>
+    </tbody>
+</table>
