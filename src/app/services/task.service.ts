@@ -1,15 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Task } from '../models/task';
-
-
-let tasks:Task[] = [
-  new Task("1", "task 1",4,"01-04-2020","01-04-2020","01-04-2020"),
-  new Task("2", "task 1",3,"01-04-2020","01-04-2020","01-04-2020"),
-  new Task("3", "task 1",7,"01-04-2020","01-04-2020","01-04-2020")
-]
-
-let taskList = of(tasks);
 
 
 @Injectable({
@@ -17,10 +9,13 @@ let taskList = of(tasks);
 })
 export class TaskService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
+  userUrl = 'http://localhost/json/tasks.json';
+
+  //Fetches data from db
   getAllTasks():Observable<Task[]>{
-    return taskList;
+    return this.http.get<Task[]>(this.userUrl);
   }
 
 }
